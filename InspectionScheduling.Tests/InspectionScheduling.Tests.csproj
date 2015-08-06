@@ -61,10 +61,6 @@
       <Project>{5d285a3c-1efe-415b-bf2c-d6ff7bb9cc91}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InspectionScheduling\InspectionScheduling.csproj">
-      <Project>{c71c82c0-5baf-4abb-ab57-d3b4c5352de5}</Project>
-      <Name>InspectionScheduling</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
