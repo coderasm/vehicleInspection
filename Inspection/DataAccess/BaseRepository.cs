@@ -7,9 +7,9 @@ namespace Inspection.DataAccess
 {
     public interface BaseRepository<T>
     {
-        Task<IEnumerable<T>> getAll();
+        Task<List<T>> getAll();
 
-        Task<IEnumerable<T>> FindBy(Expression<Func<T, bool>> query);
+        Task<List<T>> FindBy(Expression<Func<T, bool>> query);
 
         Task<T> getById(int id);
 

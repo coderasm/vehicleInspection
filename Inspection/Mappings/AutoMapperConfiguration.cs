@@ -9,6 +9,7 @@ namespace Inspection.Mappings
         {
             Mapper.CreateMap<FlooredCarFlat, FlooredCar>();
             Mapper.CreateMap<FlooredCarFlat, InspectionRegion>();
+            Mapper.CreateMap<FlooredCarFlat, Dealer>();
         }
     }
 }

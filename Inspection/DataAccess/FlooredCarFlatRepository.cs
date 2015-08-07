@@ -6,14 +6,14 @@ namespace Inspection.DataAccess
 {
     public interface FlooredCarFlatRepository
     {
-        Task<IEnumerable<FlooredCarFlat>> getAll();
+        Task<List<FlooredCarFlat>> getAll();
 
         Task<FlooredCarFlat> getById(int id);
 
-        Task<IEnumerable<FlooredCarFlat>> getAllNeverInspected();
+        Task<List<FlooredCarFlat>> getAllNeverInspected();
 
-        Task<IEnumerable<FlooredCarFlat>> getAllByRegion(int regionId);
+        Task<List<FlooredCarFlat>> getAllByRegion(int regionId);
 
-        Task<IEnumerable<FlooredCarFlat>> getAllByDealer(int dealerId);
+        Task<List<FlooredCarFlat>> getAllByDealer(int dealerId);
     }
 }

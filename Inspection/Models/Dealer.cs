@@ -4,10 +4,10 @@ namespace Inspection.Models
 {
     public class Dealer
     {
-        public int Id { get; set; }
+        public int DealerId { get; set; }
         public string Name { get; set; }
         public int RegionId { get; set; }
-        public IEnumerable<FlooredCar> FlooredCars { get; set; }
+        public List<FlooredCar> FlooredCars { get; set; }
 
         public Dealer()
         {

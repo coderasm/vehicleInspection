@@ -9,7 +9,7 @@ using Inspection.Models;
 
 namespace Inspection.DataAccess
 {
-    public class FlooredCarFlatsDAO : FlooredCarFlatRepository
+    public class FlooredCarFlatDAO : FlooredCarFlatRepository
     {
         private readonly BaseRepository<FlooredCarFlat> _internalBaseRepository;
         private readonly DateTime defaultDate = DateTime.Parse("1899-12-30 00:00:00.000");
@@ -25,7 +25,7 @@ namespace Inspection.DataAccess
 	                                                            fv.FlooringDate IS NOT NULL AND
 	                                                            fv.FlooringDate <> '1899-12-30 00:00:00.000'";
 
-        public FlooredCarFlatsDAO(BaseRepository<FlooredCarFlat> _internalBaseRepository)
+        public FlooredCarFlatDAO(BaseRepository<FlooredCarFlat> _internalBaseRepository)
         {
             this._internalBaseRepository = _internalBaseRepository;
             getAllFlooredPredicate = car => isFloored(car);
@@ -37,7 +37,7 @@ namespace Inspection.DataAccess
                    car.FlooringDate != null && !car.FlooringDate.Equals(defaultDate);
         }
 
-        public async Task<IEnumerable<FlooredCarFlat>> getAll()
+        public async Task<List<FlooredCarFlat>> getAll()
         {
             return await _internalBaseRepository.FindBy(getAllFlooredPredicate);
         }
@@ -48,20 +48,21 @@ namespace Inspection.DataAccess
             return await _internalBaseRepository.getById(id);
         }
 
-        public async Task<IEnumerable<FlooredCarFlat>> getAllNeverInspected()
+        public async Task<List<FlooredCarFlat>> getAllNeverInspected()
         {
             using (var connection = await ConnectionFactory.getOpenConnection())
             {
-                return await connection.QueryAsync<FlooredCarFlat>(getAllNeverInspectedQuery);
+                var neverInspectedCars = await connection.QueryAsync<FlooredCarFlat>(getAllNeverInspectedQuery);
+                return neverInspectedCars.ToList();
             }
         }
 
-        public Task<IEnumerable<FlooredCarFlat>> getAllByRegion(int regionId)
+        public Task<List<FlooredCarFlat>> getAllByRegion(int regionId)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<FlooredCarFlat>> getAllByDealer(int dealerId)
+        public Task<List<FlooredCarFlat>> getAllByDealer(int dealerId)
         {
             throw new System.NotImplementedException();
         }

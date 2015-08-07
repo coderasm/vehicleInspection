@@ -6,7 +6,7 @@ namespace Inspection.Models
     {
         public int RegionId { get; set; }
         public string RegionName { get; set; }
-        public IEnumerable<Dealer> Dealers { get; set; }
+        public List<Dealer> Dealers { get; set; }
 
         public InspectionRegion()
         {
