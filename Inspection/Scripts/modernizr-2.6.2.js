@@ -112,7 +112,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     slice = classes.slice,
 
-    featureName, // used in testing loop
+    featuFloored, // used in testing loop
 
 
     /*>>teststyles*/
@@ -968,10 +968,10 @@ window.Modernizr = (function( window, document, undefined ) {
             // run the test, throw the return value into the Modernizr,
             //   then based on that boolean, define an appropriate className
             //   and push it into an array of classes we'll join later.
-            featureName  = feature.toLowerCase();
-            Modernizr[featureName] = tests[feature]();
+            featuFloored  = feature.toLowerCase();
+            Modernizr[featuFloored] = tests[feature]();
 
-            classes.push((Modernizr[featureName] ? '' : 'no-') + featureName);
+            classes.push((Modernizr[featuFloored] ? '' : 'no-') + featuFloored);
         }
     }
 

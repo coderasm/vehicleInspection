@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Inspection.DataAccess;
 using Microsoft.Owin.Security.OAuth;
 using Microsoft.Practices.Unity;
-using Newtonsoft.Json.Serialization;
 
 namespace Inspection
 {
@@ -16,6 +11,7 @@ namespace Inspection
         {
             var container = new UnityContainer();
             container.RegisterType<FlooredCarFlatRepository, FlooredCarFlatDAO>(new HierarchicalLifetimeManager());
+            container.RegisterType<BaseRepository<FlooredCarFlatRepository>, Repository<FlooredCarFlatRepository>>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API configuration and services
